@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import profileIcon from '../../images/profileicon.png'
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -39,17 +41,24 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
+      <div onClick={openMenu}>
+        <span class="material-symbols-outlined">
+          menu
+        </span>
+      </div>
+      <img src={user?.profile_image} className="NV-Profile-Icon"></img>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <div className="NV-Profile-Username">
+              <img src={user.profile_image}></img>
+              <p>{user.username}</p>
+            </div>
+            <div className="NV-Profile-Outfit-Logout">
+            <p> Upload Outfit </p>
+            <button onClick={handleLogout}>Log Out</button>
+
+            </div>
           </>
         ) : (
           <>
