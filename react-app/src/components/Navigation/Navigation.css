@@ -1,7 +1,132 @@
+
+.NV-Right-Div {
+  margin-right:2% ;
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: end;
+
+}
+
+.NV-Right-Section {
+  margin-right:2% ;
+  width: fit-content;
+  padding-top: 20px;
+  display: flex;
+  align-content: end;
+  flex-direction: column;
+  z-index: 1;
+  cursor: pointer;
+}
+
 .profile-dropdown {
+  width: fit-content;
+  display: flex;
+  align-self: flex-end;
   position: absolute;
+  margin-top: 30px;
+  padding: 15px;
+  padding-right: 40px;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: #c7c7c73f; 
 }
 
 .hidden {
   display: none;
+}
+
+/*
+INDEX.JS 
+*/
+
+
+.NV-Main-Div {
+  height: 8vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.NV-Left-Div {
+  display: inline-flex;
+  height: 8vh;
+  width: 35vw;
+}
+
+.NV-Logo {
+  height: 5vh;
+  border-radius: 5px;
+}
+
+.NV-Menu-Left-Options {
+  display: inline-flex;
+  height: 6vh;
+  width: 5vw;
+  padding-top: 0.8vw;
+  padding-left: 1vw;
+}
+
+.NV-Menu-Left-Options {
+  cursor: pointer;
+}
+
+.NV-Menu-Right-Options {
+  display: inline-flex;
+  position: absolute;
+  left: 90px;
+  height: 8vh;
+  width: 20vw;
+  padding-left: 25px;
+  padding-right: 25px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.NV-Menu-Options {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 6vh;
+  width: 6vw;
+  border-radius: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.NV-Menu-Options:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.NV-Right-Div {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 8vh;
+  width: 35vw;
+}
+
+.NV-Profile-Icon {
+  position: absolute;
+  top: 10px;
+  right: 35px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
+.NV-Profile-Icon:hover {
+  cursor: pointer;
+}
+
+.NV-hype-logo {
+  height: 5vh;
+  border-radius: 5px;
 }

@@ -1,0 +1,46 @@
+.NV-Profile-Username{
+    display: flex;
+    flex-direction: row;
+    /* margin-bottom: 8px; */
+}
+.NV-Profile-Username img{
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.NV-Profile-Username p{
+    font-size: 16px;
+    font-weight: bold;
+    align-self: center;
+    font-family: sans-serif;
+    color: #000000de;
+
+
+}
+
+.NV-Profile-Outfit-Logout{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    width: 100%;
+}
+
+.NV-Profile-Outfit-Logout p{
+    font-size: 16px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    color: #000000de;
+
+}
+.NV-Profile-Outfit-Logout button{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000de;
+    cursor: pointer;
+    padding: 0;
+}
