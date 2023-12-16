@@ -1,42 +1,75 @@
 # WELCOME TO HYPE
 
-![image](https://github.com/Sadiqaxxmed/Hype/assets/43020644/1f654a53-9db8-45d9-a988-5ade7128e46a)
+Hype is a comprehensive full-stack web application designed for users seeking inspiration from their favorite influencers across various categories such as fashion, outfits, and curated products. Offering an immersive platform, users can discover, explore, and connect with influencers, accessing their recommended outfits and product recommendations. Whether it's fashion advice or discovering new trends, Hype caters to diverse interests, providing a seamless and personalized experience for users seeking inspiration in their daily lives.
 
-## Getting started
-1. Clone this repository (only this branch)
+[Hype will be coming soon!]()
 
-2. Install dependencies
+### The languages & frameworks I used to complete this project are as follows:
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+![Python](https://img.shields.io/badge/Python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-%23FCA121.svg?style=for-the-badge&logo=sqlalchemy&logoColor=white)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+## Preview Of Hype (More in Repo Wiki) 
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+## Splash Page
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+![image](https://github.com/Sadiqaxxmed/Hype/assets/43020644/ca724eb5-d7ee-4bcc-9dab-dc2557d111a7)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+## Home Page
 
-   ```bash
-   pipenv shell
-   ```
+![image](https://github.com/Sadiqaxxmed/Hype/assets/43020644/2ae255e4-68e4-426c-bc30-3278eef39ded)
 
-   ```bash
-   flask db upgrade
-   ```
+## User Profile Page 
 
-   ```bash
-   flask seed all
-   ```
+![image](https://github.com/Sadiqaxxmed/Hype/assets/43020644/0424bc79-d935-4a25-85b6-1943ba55aeae)
 
-   ```bash
-   flask run
-   ```
+### How to Build/Run Site Locally -> 
+To install and run Pear Music, follow these steps:
 
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+```
+1.  Clone the repository from GitHub:
+
+git clone https://github.com/your-username/handmade-haven.git
+
+2.  Install the required Python packages:
+
+pipenv install -r requirements.txt
+
+3.  Install the required JavaScript packages:
+
+cd react-app
+npm install
+
+4.  Start the Flask server:
+
+'in a seperate terminal'
+
+cd app
+pipenv shell
+flask db init
+flask db migrate
+flask db upgrade
+flask seed all (flask seed undo <- `to undo all seeds`)
+flask run
+
+5.  Start the React app:
+
+'in a seperate terminal'
+
+cd react-app
+npm start
+```
+<!-- 
+## Api's & plugins Used:
+**react-player** || **bad-words** || **email-validator**
+## Additional Features Planned:
+```
+1. Album Functionality
+2. Liked Playlists
+``` -->
