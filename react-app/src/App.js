@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import OutfitDetails from "./components/OutfitDetails";
+import UploadOutfit from "./components/UploadOutfit";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -23,6 +24,8 @@ function App() {
           <Route path="/Home" component={Home}>
           </Route>
           <Route path="/OutfitDetails" component={OutfitDetails}>
+          </Route>
+          <Route path="/UploadOutfit" component={UploadOutfit}>
           </Route>
           <Route path="/login" >
             <LoginFormPage />

@@ -1,0 +1,60 @@
+.UO-Main-Div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80vh;
+    margin-top: 80px;
+}
+
+.UO-Upload-Title {
+    position: relative;
+    top: 0;
+    font-family: sans-serif, Courier, monospace;
+}
+
+.UO-Upload-Div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    width: 50vw;
+
+
+    /* Add a shadow around the whole div */
+    border-radius: 20px;
+    background-color: rgb(248, 248, 248);
+    margin-top: 5px;
+}
+.PS-Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    height: 60vh;
+    width: 40vw;
+}
+.UO-Upload-Button {
+    background-color: rgb(208, 75, 80);
+    transition: background-color 0.3s ease; /* Smooth transition for background-color */
+    color: white;
+    font-family: sans-serif, "Helvetica Neue", Helvetica;
+    font-size: 15px;
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+}
+
+.UO-Upload-Button:hover {
+    background-color: rgb(163, 67, 71);
+    color: white;
+    font-family: sans-serif, "Helvetica Neue", Helvetica;
+    font-size: 15px;
+    height: 40px;
+    width: 90px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

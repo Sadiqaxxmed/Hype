@@ -1,7 +1,9 @@
 // TODO: CONSTANTS
 
-const ALL_OUTFITS         = 'ALL_OUTFITS';
-const SINGLE_OUTFITS       = 'SINGLE_OUTFITS';
+const ALL_OUTFITS           = 'ALL_OUTFITS';
+const SINGLE_OUTFITS        = 'SINGLE_OUTFITS';
+const USER_OUTFITS          = 'USER_OUTFITS';
+const CREATE_OUTFITS        = 'CREATE_OUTFITS';
 
 // TODO: ACTION CREATORS
 
@@ -11,7 +13,15 @@ export const actionAllOutfits = (outfits) => {
 
 export const actionSingleOutfits = (outfits) => {
     return { type: SINGLE_OUTFITS, outfits }
-  }
+}
+
+export const actionUserOutfits = (outfits) => {
+    return { type: USER_OUTFITS, outfits }
+}
+
+export const actionCreateOutfits = (outfit) => {
+    return { type: CREATE_OUTFITS, outfit }
+}
 
 // TODO: NORMALIZE DATA
 
@@ -49,6 +59,32 @@ export const thunkSingleOutfits = (outfitId) => async dispatch => {
     }
 }
 
+export const thunkUserOutfits = (userId) => async dispatch => {
+    const response = await fetch(`/api/outfits/userOutfits/${userId}`);
+
+    if (response.ok) {
+        const allUseroutfits = await response.json();
+        const normalized = normalizeAllOutfits(allUseroutfits.outfits);
+        dispatch(actionUserOutfits(normalized));
+        return;
+    }
+}
+
+export const thunkCreateOutfits = (outfit, user_id) => async (dispatch) => {
+    const response = await fetch(`/api/outfits/uploadOutfit/${user_id}`, {
+        method: 'POST',
+        body: outfit
+    })
+
+    if (response.ok) {
+        const outfit = await response.json();
+        console.log('THUNK OUTFIT:', outfit);
+        dispatch(actionCreateOutfits(outfit));
+        return;
+    }
+}
+
+
 // TODO: INITIAL SLICE STATE
 
 const initialState = {
@@ -65,6 +101,10 @@ const outfitsReducer = (state = initialState, action) => {
         return { ...state, allOutfits: { ...action.outfits } }
         case SINGLE_OUTFITS:
         return { ...state, singleOutfits: { ...action.outfits } }
+        case USER_OUTFITS:
+        return { ...state, userOutfits: { ...action.outfits } }
+        case CREATE_OUTFITS:
+        return { ...state, createOutfits: { ...action.outfits } }
         default: return { ...state }
     }
 }

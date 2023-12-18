@@ -27,23 +27,24 @@ def get_outfit(id):
 
 
 # CREATE: Add a new outfit
-@outfit_routes.route('/newOutfit', methods=['POST'])
-def create_new_outfit():
+@outfit_routes.route('/uploadOutfit/<int:user_id>', methods=['POST'])
+@login_required
+def create_new_outfit(user_id):
 
-    data = request.json
+    data = request.form
     
-    new_outfit = Outfit(
+    outfit = Outfit(
             owner_id=data['owner_id'],
             description=data['description'],
             outfitPrice=data['outfitPrice'],
             image=data['image'],
             catagory=data['catagory']
     )
-
-    db.session.add(new_outfit)
+    
+    db.session.add(outfit)
     db.session.commit()
 
-    return {'outfit': new_outfit.to_dict()}
+    return {'outfit': outfit.to_dict()}
 
 
 # UPDATE: Update details of a specific outfit by ID
