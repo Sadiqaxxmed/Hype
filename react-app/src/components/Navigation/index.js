@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import reactRouterDom, { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import hypeLogo from '../../images/hypeicon.png'
@@ -7,6 +8,8 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
+	const user_id = useSelector(state => state.session.user?.id);
+
 
 	return (
 		<>
@@ -18,15 +21,23 @@ function Navigation({ isLoaded }){
 		</div>
 
 		<div className='NV-Menu-Right-Options'>
-			<div className='NV-Menu-Options'>
-				Home
-			</div>
+
+			<NavLink to='/Home' className="NavLink" exact={true}>
+				<div className='NV-Menu-Options'>
+					Home
+				</div>
+			</NavLink>
+
 			<div className='NV-Menu-Options'>
 				Browse
 			</div>
-			<div className='NV-Menu-Options'>
-				Upload
-			</div>
+
+				<NavLink to={`/uploadOutfit/${user_id}`} className="NavLink" exact={true}>
+					<div className='NV-Menu-Options'>
+						Upload
+					</div>					
+				</NavLink>
+
 		</div>
 		</div>
 
