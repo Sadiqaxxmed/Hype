@@ -141,8 +141,8 @@ const outfitsReducer = (state = initialState, action) => {
         return { ...state, userOutfits: { ...action.outfits } }
         case CREATE_OUTFITS:
         return { ...state, createOutfits: { ...action.outfits } }
-        // case UPDATE_OUTFITS:
-        // return { ...state, updateOutfits: { ...action.outfits } }
+        case UPDATE_OUTFITS:
+        return { ...state, updateOutfits: { ...action.outfits } }
         case DELETE_OUTFITS:
         return { ...state, deleteOutfits: { ...action.outfits } }
         default: return { ...state }
