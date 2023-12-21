@@ -48,18 +48,19 @@ def create_new_outfit(user_id):
 
 
 # UPDATE: Update details of a specific outfit by ID
-@outfit_routes.route('/updateOutfits/<int:id>', methods=['PUT'])
-def update_outfit(id):
+@outfit_routes.route('/updateOutfits/<int:outfit_id>', methods=['PUT'])
+@login_required
+def update_outfit(outfit_id):
         
-        outfit = Outfit.query.get(id)
+        outfit = Outfit.query.get(outfit_id)
 
         if outfit:
-            data = request.json
-            outfit.owner_id = data.get('owner_id', outfit.owner_id)
-            outfit.description = data.get('description', outfit.description)
-            outfit.outfitPrice = data.get('outfitPrice', outfit.outfitPrice)
-            outfit.image = data.get('image', outfit.image)
-            outfit.catagory = data.get('catagory', outfit.catagory)
+            data = request.form
+            # outfit.owner_id = data.get('owner_id', outfit.owner_id)
+            outfit.description = data["description"]
+            outfit.outfitPrice = data["outfitPrice"]
+            outfit.image = data["image"]
+            outfit.catagory = data["catagory"]
 
             db.session.commit()
 
@@ -70,10 +71,11 @@ def update_outfit(id):
 
 
 # DELETE: Delete a specific outfit by ID
-@outfit_routes.route('/deleteOufits/<int:id>', methods=['DELETE'])
-def delete_outfit(id):
+@outfit_routes.route('/deleteOutfits/<int:outfit_id>', methods=['DELETE'])
+@login_required
+def delete_outfit(outfit_id):
 
-    outfit = Outfit.query.get(id)
+    outfit = Outfit.query.get(outfit_id)
 
     if outfit:
         db.session.delete(outfit)

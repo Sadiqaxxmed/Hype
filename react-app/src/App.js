@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import OutfitDetails from "./components/OutfitDetails";
 import UploadOutfit from "./components/UploadOutfit";
+import UpdateOutfit from "./components/UpdateOutfit";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -26,6 +27,8 @@ function App() {
           <Route path="/OutfitDetails" component={OutfitDetails}>
           </Route>
           <Route path="/UploadOutfit" component={UploadOutfit}>
+          </Route>
+          <Route path="/UpdateOutfits/:outfit_id" component={UpdateOutfit}>
           </Route>
           <Route path="/login" >
             <LoginFormPage />

@@ -1,0 +1,63 @@
+.HM-Delete-Main-Div {
+    height: 220px;
+    width: 400px;
+    z-index: 9999;
+}
+
+.HM-Delete-Title {
+    color: rgb(208, 75, 90);
+    position: absolute;
+    font-size: 20px;
+    width: 250px;
+    text-align: center;
+    font-weight: 600;
+    top: 40px;
+    left: 70px;
+}
+
+.HM-Delete-Buttons {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    font-size: .9em;
+    position: absolute;
+    bottom: 15px;
+    left: -5px;
+}
+
+.HM-Cancel-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: rgb(112, 102, 115);
+    width: 115px;
+    border-radius: 6px;
+    margin-left: 80px;
+    padding: 6px 0px 6px 0px;
+    color: white;
+    cursor: pointer;
+}
+
+.HM-Delete-Button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    background-color: rgb(208, 75, 90);
+    width: 115px;
+    border-radius: 6px;
+    margin-left: 20px;
+    padding: 6px 0px 6px 0px;
+    color: white;
+    cursor: pointer;
+}
+.HM-Cancel-Button:hover {
+    background-color: rgb(112, 102, 115, 0.7);
+}
+
+.HM-Delete-Button:hover {
+    background-color: rgb(208, 75, 90, 0.7);
+}
