@@ -4,6 +4,8 @@ const ALL_OUTFITS           = 'ALL_OUTFITS';
 const SINGLE_OUTFITS        = 'SINGLE_OUTFITS';
 const USER_OUTFITS          = 'USER_OUTFITS';
 const CREATE_OUTFITS        = 'CREATE_OUTFITS';
+const UPDATE_OUTFITS        = 'UPDATE_OUTFITS';
+const DELETE_OUTFITS        = 'DELETE_OUTFITS';
 
 // TODO: ACTION CREATORS
 
@@ -21,6 +23,14 @@ export const actionUserOutfits = (outfits) => {
 
 export const actionCreateOutfits = (outfit) => {
     return { type: CREATE_OUTFITS, outfit }
+}
+
+export const actionUpdateOutfits = (outfit) => {
+    return { type: UPDATE_OUTFITS, outfit }
+}
+
+export const actionDeleteOutfits = (outfit) => {
+    return { type: DELETE_OUTFITS, outfit }
 }
 
 // TODO: NORMALIZE DATA
@@ -48,14 +58,14 @@ export const thunkAllOutfits = () => async dispatch => {
 
 export const thunkSingleOutfits = (outfitId) => async dispatch => {
     const response = await fetch(`/api/allOutfits/${outfitId}`);
-  
+
     if (response.ok) {
-      const outfit = await response.json();
-      dispatch(actionSingleOutfits(outfit));
-      return;
+        const outfit = await response.json();
+        dispatch(actionSingleOutfits(outfit));
+        return;
     } else {
-      const res = await response.json();
-      return { 'error' : res.error, status: res.status }
+        const res = await response.json();
+        return { 'error' : res.error, status: res.status }
     }
 }
 
@@ -84,6 +94,32 @@ export const thunkCreateOutfits = (outfit, user_id) => async (dispatch) => {
     }
 }
 
+export const thunkUpdateOutfits = (outfit, outfit_id) => async (dispatch) => {
+    const response = await fetch(`/api/outfits/updateOutfits/${outfit_id}`, {
+        method: 'PUT',
+        body: outfit
+    })
+
+    if (response.ok) {
+        const outfit = await response.json();
+        console.log('THUNK OUTFIT:', outfit);
+        dispatch(actionUpdateOutfits(outfit));
+        return;
+    }
+}
+
+export const thunkDeleteOutfits = ({outfit_id}) => async (dispatch) => {
+    const response = await fetch(`/api/outfits/deleteOutfits/${outfit_id}`, { method: 'DELETE' })
+    console.log('THUNK DELETE OUTFIT:', response)
+
+    if (response.ok) {
+        const outfit = await response.json();
+        console.log('THUNK OUTFIT:', outfit);
+        dispatch(actionDeleteOutfits(outfit));
+        return;
+    }
+}
+
 
 // TODO: INITIAL SLICE STATE
 
@@ -105,6 +141,10 @@ const outfitsReducer = (state = initialState, action) => {
         return { ...state, userOutfits: { ...action.outfits } }
         case CREATE_OUTFITS:
         return { ...state, createOutfits: { ...action.outfits } }
+        // case UPDATE_OUTFITS:
+        // return { ...state, updateOutfits: { ...action.outfits } }
+        case DELETE_OUTFITS:
+        return { ...state, deleteOutfits: { ...action.outfits } }
         default: return { ...state }
     }
 }
