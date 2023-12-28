@@ -24,7 +24,7 @@ function App() {
         <Switch>
           <Route path="/Home" component={Home}>
           </Route>
-          <Route path="/OutfitDetails" component={OutfitDetails}>
+          <Route path="/outfitDetails/:outfit_id" component={OutfitDetails}>
           </Route>
           <Route path="/UploadOutfit" component={UploadOutfit}>
           </Route>

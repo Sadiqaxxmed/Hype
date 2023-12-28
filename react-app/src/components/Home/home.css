@@ -57,14 +57,19 @@
 
 .HM-Outfit-Menu-Icon {
     position: absolute;
-    height: 25px;
+    padding-top: 14px;
+    padding-left: 4px;
+    height: 15px;
     width: 25px;
-    top: 20px;
-    left: 20px;
+    top: 5px;
+    left: 15px;
+    border-radius: 100%;
     color: white;
 }
 
 .HM-Outfit-Menu-Icon:hover {
+    color: rgb(208, 75, 90);
+    background-color: rgb(224, 224, 224);
     cursor: pointer;
 }
 
@@ -130,6 +135,12 @@
     font-size: 15px;
 }
 
+.HM-Outfit-Update-Text:hover {
+    cursor: pointer;
+    color: rgb(208, 75, 90);
+}
+
+
 .HM-Outfit-Delete {
     background: none;
     border: none;
@@ -143,6 +154,18 @@
     font-size: 15px;
 }
 
+.HM-Outfit-Delete-Text:hover {
+    cursor: pointer;
+    color: rgb(208, 75, 90);
+}
+
+.HM-OutfitDetail-Click {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    height: 74%;
+    width: 100%;
+}
 
 .HM-Profile-Card {
     display: flex;

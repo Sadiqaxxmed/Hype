@@ -88,7 +88,6 @@ export const thunkCreateOutfits = (outfit, user_id) => async (dispatch) => {
 
     if (response.ok) {
         const outfit = await response.json();
-        console.log('THUNK OUTFIT:', outfit);
         dispatch(actionCreateOutfits(outfit));
         return;
     }
@@ -102,7 +101,6 @@ export const thunkUpdateOutfits = (outfit, outfit_id) => async (dispatch) => {
 
     if (response.ok) {
         const outfit = await response.json();
-        console.log('THUNK OUTFIT:', outfit);
         dispatch(actionUpdateOutfits(outfit));
         return;
     }
@@ -110,11 +108,9 @@ export const thunkUpdateOutfits = (outfit, outfit_id) => async (dispatch) => {
 
 export const thunkDeleteOutfits = ({outfit_id}) => async (dispatch) => {
     const response = await fetch(`/api/outfits/deleteOutfits/${outfit_id}`, { method: 'DELETE' })
-    console.log('THUNK DELETE OUTFIT:', response)
 
     if (response.ok) {
         const outfit = await response.json();
-        console.log('THUNK OUTFIT:', outfit);
         dispatch(actionDeleteOutfits(outfit));
         return;
     }

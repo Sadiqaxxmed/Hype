@@ -5,10 +5,10 @@ from flask_login import current_user, login_required
 pieces_routes = Blueprint('pieces', __name__)
 
 # Get all pieces by outfit id
-@pieces_routes.route('/<int:id>')
-# @login_required
-def get_pieces(id):
-    pieces = Outfit_Piece.query.filter(Outfit_Piece.outfit_id == id).all()
+@pieces_routes.route('/outfitDetails/<int:outfit_id>')
+@login_required
+def get_pieces(outfit_id):
+    pieces = Outfit_Piece.query.filter(Outfit_Piece.outfit_id == outfit_id).all()
     return {'pieces': [piece.to_dict() for piece in pieces]}
 
 # Add a piece to an outfit
