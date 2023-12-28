@@ -1,19 +1,33 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { thunkSingleOutfits } from "../../store/outfit";
+import { useHistory, useParams } from 'react-router-dom';
+
+import { thunkAllOutfitPieces } from "../../store/outfitPiece";
 
 import './OutfitDetails.css'
 
 function OutfitDetails(){
+    const { outfit_id } = useParams();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
+    const outfit = useSelector(state => state.outfits.allOutfits?.[outfit_id]);
+    const outfitPieces = Object.values(useSelector(state => state.outfitPieces?.allOutfitPieces));
+
+    const navigateToLink = (link) => {
+        window.location.href = link; 
+    } 
+
+    useEffect(() => {   
+        dispatch(thunkAllOutfitPieces(outfit.id))
+    }, [dispatch])
     
     return (
         <div className="OD-Main-Div">
 
             <div className="OD-Top-Div">
-                <img className="OD-OutfitImage" src="https://tinyurl.com/5hcszuf6" alt="lilyacthy.png"></img>
+                <img className="OD-OutfitImage" src={outfit.image} alt="lilyacthy.png"></img>
 
                 <div className="OD-Top-Right-Div">
 
@@ -31,48 +45,25 @@ function OutfitDetails(){
                     </div>
 
                     <div className="OD-Top-Right-Middle">
-
-                        <div className="OD-Top-Right-Middle-Outfit-Pieces">
-                            <img className="OD-Pieces-One-Img" src="https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_750,h_750/global/533745/02/mod01/fnd/PNA/fmt/png/Scuderia-Ferrari-Race-Hooded-Men's-Sweat-Jacket" alt="FerraiHoodie.png"></img>
+                        {outfitPieces.map((outfitPieces) => (
+                            <>
+                            <div className="OD-Top-Right-Middle-Outfit-Pieces" onClick={() => navigateToLink(outfitPieces.link)}>
+                            <img className="OD-Pieces-One-Img" src={outfitPieces.image} alt="FerraiHoodie.png"></img>
 
                             <div className="OD-Top-Right-Middle-Outfit-Pieces-Info">
-                                <p className="OD-Piece-One-Brand">Puma</p>
-                                <p className="OD-Piece-One-Name">Ferrari Race Hooded</p>
-                                <p className="OD-Piece-One-Price">$60.00</p>
+                                <p className="OD-Piece-One-Brand">{outfitPieces.piece_name}</p>
+                                <p className="OD-Piece-One-Price">${outfitPieces.piece_price.toLocaleString()}</p>
                             </div>
                             <i class="fa-solid fa-chevron-right fa-2xl"></i>
                         </div>
                         <div class="border"></div>
-
-                        <div className="OD-Top-Right-Middle-Outfit-Pieces">
-                            <img className="OD-Pieces-One-Img" src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-mens-shoes-jBrhbr.png" alt="FerraiHoodie.png"></img>
-
-                            <div className="OD-Top-Right-Middle-Outfit-Pieces-Info">
-                                <p className="OD-Piece-One-Brand">Nike</p>
-                                <p className="OD-Piece-One-Name">Nike Air Force 1 07</p>
-                                <p className="OD-Piece-One-Price">$110.00</p>
-                            </div>
-                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
-                        </div>
-                        <div class="border"></div>
-
-                        <div className="OD-Top-Right-Middle-Outfit-Pieces">
-                            <img className="OD-Pieces-One-Img" src="https://mnml.la/cdn/shop/products/D271-Star-Straight-Denim-Blue-2_540x.jpg?v=1659177521" alt="FerraiHoodie.png"></img>
-
-                            <div className="OD-Top-Right-Middle-Outfit-Pieces-Info">
-                                <p className="OD-Piece-One-Brand">Mnml</p>
-                                <p className="OD-Piece-One-Name">STRAIGHT DENIM</p>
-                                <p className="OD-Piece-One-Price">$48.00</p>
-                            </div>
-                            <i class="fa-solid fa-chevron-right fa-2xl"></i>
-                        </div>
-
+                        </>
+                        ))}
                     </div>
                     <div class="Top-Right-Bottom-Border"></div>
-
                     <div className="OD-Top-Right-Bottom">
                         <p className="OD-Price-Caption">Total Price:</p>
-                        <p className="OD-Price">$218</p>
+                        <p className="OD-Price">{outfit.outfitPrice.toLocaleString()}</p>
                     </div>
                 </div>
             </div>
@@ -80,7 +71,7 @@ function OutfitDetails(){
             <div className="OD-Middle-Div">
                 <div className="OD-Middle-Description">
                     <h2 className="OD-Middle-Div-Description-Title">Description</h2>
-                    <p className="OD-Middle-Div-Description-Paragraph">This outfit is perfect for a chill night out trusss me it demands attention</p>
+                    <p className="OD-Middle-Div-Description-Paragraph">{outfit.description}</p>
                 </div>
                 <div className="OD-Middle-Review">
                     <h2 className="OD-Middle-Div-Review-Title">Reviews</h2>
