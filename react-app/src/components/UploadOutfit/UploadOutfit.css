@@ -2,40 +2,87 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 80vh;
+    height: 130vh;
     margin-top: 80px;
 }
 
 .UO-Upload-Title {
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 80px;
+    left: 20px;
     font-family: sans-serif, Courier, monospace;
 }
 
+.UO-Outfit-Details {
+    position: absolute;
+    top: 25%;
+    left: 29%;
+    font-family: sans-serif, Courier, monospace;
+}
+
+.UO-Outfit-Pieces {
+    position: absolute;
+    top: 81%;
+    left: 29%;
+    font-family: sans-serif, Courier, monospace;
+}
+
+.UO-Nav-border {
+    position: absolute;
+    width: 100%;
+    height: 1.5px;  
+    top: 150px;
+    left: 0px;
+    right: 0px;
+    background-color: #e8e8e8; 
+}
+
+.UO-Side-border {
+    position: absolute;
+    top: 150px;
+    bottom: 0;
+    left: 25%;
+    width: 2px; 
+    height: 130vh;
+    background-color: #e8e8e8; 
+}
+
 .UO-Upload-Div {
+    position: absolute;
+    top: 35%;
+    left: 26%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 70vh;
-    width: 50vw;
-
-
-    /* Add a shadow around the whole div */
-    border-radius: 20px;
-    background-color: rgb(248, 248, 248);
-    margin-top: 5px;
+    height: 100vh;
+    width: 72vw;
 }
-.PS-Form {
+
+.Upload-Outfit-Form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 15px;
-    height: 60vh;
-    width: 40vw;
+    height: 45vh;
+    padding-top: 15px;
+    width: 95%;
 }
+
+.Upload-Pieces-Form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    height: 45vh;
+    padding-top: 80px;
+    width: 95%;
+}
+
 .UO-Upload-Button {
+    position: absolute;
+    top: 100px;
+    right: 0;
     background-color: rgb(208, 75, 80);
     transition: background-color 0.3s ease; /* Smooth transition for background-color */
     color: white;
