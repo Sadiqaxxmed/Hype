@@ -13,6 +13,15 @@ def get_outfits():
 
     return {'outfits': [outfit.to_dict() for outfit in outfits]}
 
+# READ: Get a list of all outfits by user ID
+
+@outfit_routes.route('/userOutfits/<int:user_id>')
+def get_user_outfits(user_id):
+
+    outfits = Outfit.query.filter(Outfit.owner_id == user_id).all()
+
+    return {'outfits': [outfit.to_dict() for outfit in outfits]}
+
 
 # READ: Get details of a specific outfit by ID
 @outfit_routes.route('/allOutfits/<int:id>')

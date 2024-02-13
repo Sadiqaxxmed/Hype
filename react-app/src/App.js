@@ -9,6 +9,7 @@ import UpdateOutfit from "./components/UpdateOutfit";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/Home" component={Home}>
+          </Route>
+          <Route path="/ProfilePage/:user_id" component={ProfilePage}>
           </Route>
           <Route path="/outfitDetails/:outfit_id" component={OutfitDetails}>
           </Route>

@@ -1,14 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import profileIcon from '../../images/profileicon.png'
+import ProfilePage from "../ProfilePage";
 import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -39,6 +43,10 @@ function ProfileButton({ user }) {
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
 
+  const navigateToProfilePage = (user_id) => {
+    history.push(`/ProfilePage/${user_id}`)
+  }
+
   return (
     <>
       <div onClick={openMenu}>
@@ -46,7 +54,7 @@ function ProfileButton({ user }) {
           menu
         </span>
       </div>
-      <img src={user?.profile_image} className="NV-Profile-Icon"></img>
+      <img src={user?.profile_image} className="NV-Profile-Icon" onClick={() => navigateToProfilePage(user.id)}></img>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>

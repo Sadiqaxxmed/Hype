@@ -1,0 +1,61 @@
+.PP-Main-Div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+    height: max-content;
+    height: 85vh;
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    gap: 50px;
+    max-width: 100%;
+}
+
+.PP-Profile-Card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 210px;
+    width: 500px;
+    margin-top: 80px;
+    border-radius: 10px;
+    background-color: rgb(239, 239, 239);
+}
+
+.PP-Profile-Icon {
+    position: relative;
+    top: -50px;
+    height: 40%;
+    width: 20%;
+    border-radius: 100%;
+}
+
+.PP-Profile-Info {
+    position: relative;
+    top: -50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.PP-Username {
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+}
+
+.PP-User-Subscribers {
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+.PP-User-Bio {
+    font-size: 15px;
+    color: black;
+}
