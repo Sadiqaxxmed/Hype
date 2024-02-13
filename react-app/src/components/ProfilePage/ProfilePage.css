@@ -25,10 +25,10 @@
     background-color: rgb(239, 239, 239);
 }
 
-.PP-Profile-Icon {
+.PP-Profile-Img {
     position: relative;
-    top: -50px;
-    height: 40%;
+    top: -25px;
+    height: 50%;
     width: 20%;
     border-radius: 100%;
 }
@@ -45,17 +45,45 @@
 }
 
 .PP-Username {
+    position: relative;
+    top: 15px;
     font-size: 18px;
     font-weight: bold;
     color: black;
 }
 
 .PP-User-Subscribers {
+    position: relative;
+    top: -10px;
     font-size: 15px;
     font-weight: bold;
     color: black;
 }
+
 .PP-User-Bio {
+    position: relative;
+    top: -20px;
     font-size: 15px;
     color: black;
+}
+
+.PP-Subscribe-Button {
+    position: relative;
+
+    text-decoration: none;
+    box-shadow: none;
+    border: none;
+    outline: none;
+
+    top: -5px;
+    height: 30px;
+    width: 120px;
+    border-radius: 100px;
+    background-color: rgb(222, 54, 77);
+
+
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
 }
