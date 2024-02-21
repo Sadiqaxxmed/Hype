@@ -54,8 +54,9 @@ function Home(){
             <img className="HM-Outfit-Pic" src={outfit.image} alt="profile"></img>
             <div className="HM-Outfit-Info-Div">
                 <i
-                    class="fa-solid fa-ellipsis fa-xl HM-Outfit-Menu-Icon"
+                    class="fa-solid fa-ellipsis fa-xl HM-Outfit-Menu-Icon" 
                     onClick={(e) => handleMenu(outfit.id)}
+                    style={{ display: outfit.owner_id === users ? 'inline-block' : 'none' }}
                 ></i>
                 {menuOpen && outfitId === outfit.id && (
                 <div className="HM-Outfit-Menu-Div">
