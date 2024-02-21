@@ -37,14 +37,17 @@ export const thunkAllOutfitPieces = (outfit_id) => async dispatch => {
     }
 }
 
-export const thunkCreateOutfitPieces = (outfitPiece) => async dispatch => {
-    const response = await fetch('/api/outfitPieces/createOutfitPiece', {
+export const thunkCreateOutfitPieces = (outfitPiecesData, outfitId) => async dispatch => {
+    console.log("MADE IT TO THUNK CREATE OUTFIT PIECES FUNCTION");
+    const response = await fetch(`/api/pieces/uploadOutfit/${outfitId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(outfitPiece)
+        body: JSON.stringify(outfitPiecesData)
     })
+
+    console.log("RESPONSE: ", response);
 
     if (response.ok) {
         const newOutfitPiece = await response.json();

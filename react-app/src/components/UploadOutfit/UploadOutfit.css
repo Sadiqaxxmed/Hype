@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 130vh;
+    height: 150vh;
+    /* max-height: max-content; */
     margin-top: 80px;
 }
 
@@ -21,9 +22,9 @@
 }
 
 .UO-Outfit-Pieces {
-    position: absolute;
-    top: 81%;
-    left: 29%;
+    position: relative;
+    top: 0%;
+    left: -36%;
     font-family: sans-serif, Courier, monospace;
 }
 
@@ -56,6 +57,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    max-height: max-content;
     width: 72vw;
 }
 
@@ -74,7 +76,8 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    height: 45vh;
+    height: 50vh;
+    max-height: fit-content;
     padding-top: 80px;
     width: 95%;
 }
@@ -101,6 +104,30 @@
     font-size: 15px;
     height: 40px;
     width: 90px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.UO-Add-Piece-Button {
+    background-color: rgb(208, 75, 80);
+    transition: background-color 0.3s ease; /* Smooth transition for background-color */
+    color: white;
+    font-family: sans-serif, "Helvetica Neue", Helvetica;
+    font-size: 14px;
+    height: 40px;
+    width: 120px;
+    border: none;
+    border-radius: 10px;
+}
+
+.UO-Add-Piece-Button:hover {
+    background-color: rgb(163, 67, 71);
+    color: white;
+    font-family: sans-serif, "Helvetica Neue", Helvetica;
+    font-size: 14px;
+    height: 40px;
+    width: 120px;
     border: none;
     border-radius: 10px;
     cursor: pointer;

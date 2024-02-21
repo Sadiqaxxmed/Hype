@@ -3,11 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 
 import { thunkCreateOutfits } from "../../store/outfit";
+import { thunkCreateOutfitPieces } from "../../store/outfitPiece";
 
 import './UploadOutfit.css';
 
 function UploadOutfit(){
-
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -16,11 +16,17 @@ function UploadOutfit(){
     const [outfitPrice, setOutfitPrice] = useState(null);
     const [catagory, setCatagory] = useState('');
     const [errors, setErrors] = useState({});
+    const [outfitPiecesForms, setOutfitPiecesForms] = useState([{ pieceName: '', piecePrice: null, link: '', pieceImage: '' }]);    
 
     const user_id = useSelector(state => state.session.user?.id);
+    const allOutfits = useSelector(state => state.outfits?.allOutfits);
+    const outfitIds = Object.keys(allOutfits);
+    const maxOutfitId = outfitIds.length > 0 ? Math.max(...outfitIds) : 0;
+    const outfitId = maxOutfitId + 1;
+    console.log("OUTFIT ID: ", outfitId);
+    
 
     const handleOutfit = async (e) => {
-
         e.preventDefault();
         let err = {}
     
@@ -39,43 +45,65 @@ function UploadOutfit(){
         if (Object.values(err).length) return setErrors(err)
     
         const outfit = new FormData();
-    
         outfit.append('image', image)
         outfit.append('description', description)
         outfit.append('outfitPrice', outfitPrice)
         outfit.append('catagory', catagory)
         outfit.append('owner_id', user_id)
 
+        // dispatch(thunkCreateOutfits(outfit, user_id));
         dispatch(thunkCreateOutfits(outfit, user_id));
-        return history.push('/home');
+
+        console.log("OUTFIT ID: ", outfitId);
+
+        if (outfitId) {
+            console.log("INSIDE IF STATEMENT");
+            handlePieces(e, outfitId);
+        }
     };
 
-    const handlePieces = async (e) => {
+    const handleAddOutfitPieceForm = () => {
+        setOutfitPiecesForms([...outfitPiecesForms, { pieceName: '', piecePrice: null, link: '', pieceImage: '' }]);
+    };
+
+    const handlePiecesChange = (index, field, value) => {
+        const newOutfitPiecesForms = [...outfitPiecesForms];
+        newOutfitPiecesForms[index][field] = value;
+        setOutfitPiecesForms(newOutfitPiecesForms);
+    };
+
+    const handlePieces = async (e, outfitId) => {
         e.preventDefault();
+        console.log("MADE IT TO HANDLE PIECES FUNCTION");
+        const outfitPiecesData = outfitPiecesForms.map(form => ({
+            piece_name: form.pieceName,
+            piece_price: form.piecePrice,
+            piece_image: form.pieceImage,
+            piece_link: form.link,
+        }));    
+        // console.log("OUTFIT PIECES DATA: ", outfitPiecesData);
+        dispatch(thunkCreateOutfitPieces(outfitPiecesData, outfitId));
     };
 
     const handleSubmit = async (e) => { 
         e.preventDefault();
-        handleOutfit();
-        handlePieces();
+        handleOutfit(e);
+        // handlePieces(e);
+        return history.push('/home');
     }
 
 
 	return (
 		<>
 		<div className='UO-Main-Div'>
-
-
             <h1 className='UO-Upload-Title'>Upload Outfit</h1>
             <div class="UO-Nav-border"></div>
             <div class="UO-Side-border"></div>
             <h2 className='UO-Outfit-Details'>Outfit Details</h2>
-            <h2 className='UO-Outfit-Pieces'>Outfit Pieces</h2>
             <button className="UO-Upload-Button" onClick={handleSubmit} type="submit">Upload</button>
-
+            {/* <button className="UO-Upload-Button" onClick={(e) => handleSubmit(e)} type="submit">Upload</button> */}
 
             <div className='UO-Upload-Div'>
-
             <form className="Upload-Outfit-Form" onSubmit={handleOutfit} method="POST" encType="multipart/form-data">
                 {errors.emptyImage ? <div className="PS-Empty-Errors">{errors.emptyImage}</div> : null}
                 <input
@@ -146,12 +174,14 @@ function UploadOutfit(){
                 />
             </form>
 
-            <form className="Upload-Pieces-Form" onSubmit={handlePieces} method="POST" encType="multipart/form-data">
+            {outfitPiecesForms.map((form, index) => (
+            <form key={index} className="Upload-Pieces-Form" onSubmit={handlePieces} method="POST" encType="multipart/form-data">
+                <h2 className='UO-Outfit-Pieces'>Outfit Pieces</h2>
                 <input
                     type="text"
                     name="pieceName"
-                    // onChange={(e) => setCatagory(e.target.value)}
-                    // value={catagory}
+                    onChange={(e) => handlePiecesChange(index, 'pieceName', e.target.value)}
+                    value={form.pieceName}
                     placeholder="Piece Name"
                     className="UO-Piece-Name"
                     style={{
@@ -166,8 +196,8 @@ function UploadOutfit(){
                 <input
                     type="number"
                     name="piecePrice"
-                    // onChange={(e) => setOutfitPrice(e.target.value)}
-                    // value={outfitPrice}
+                    onChange={(e) => handlePiecesChange(index, 'piecePrice', e.target.value)}
+                    value={form.piecePrice}
                     placeholder="Piece Price"
                     className="UO-Piece-Price"
                     style={{
@@ -182,8 +212,8 @@ function UploadOutfit(){
                 <input
                     type="text"
                     name="link"
-                    // onChange={(e) => setCatagory(e.target.value)}
-                    // value={catagory}
+                    onChange={(e) => handlePiecesChange(index, 'link', e.target.value)}
+                    value={form.link}
                     placeholder="Link"
                     className="UO-Piece-Link"
                     style={{
@@ -198,8 +228,8 @@ function UploadOutfit(){
                 <input
                     type="text"
                     name="pieceImage"
-                    // onChange={(e) => setImage(e.target.value)}
-                    // value={image}
+                    onChange={(e) => handlePiecesChange(index, 'pieceImage', e.target.value)}
+                    value={form.pieceImage}
                     placeholder="Piece Image"
                     className="UO-Piece-Image"
                     style={{
@@ -212,12 +242,14 @@ function UploadOutfit(){
                     }}
                 />
             </form>
+            ))}
+            <button className="UO-Add-Piece-Button" onClick={handleAddOutfitPieceForm}>Add Outfit Piece</button>
             </div>
-
 		</div>		           
 		</>
 	);
 }
 
 export default UploadOutfit;
+
 

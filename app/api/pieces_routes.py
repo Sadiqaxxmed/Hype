@@ -12,22 +12,29 @@ def get_pieces(outfit_id):
     return {'pieces': [piece.to_dict() for piece in pieces]}
 
 # Add a piece to an outfit
-@pieces_routes.route('/<int:id>', methods=['POST'])
+@pieces_routes.route('/uploadOutfit/<int:outfit_id>', methods=['POST'])
 @login_required
-def add_piece(id):
-    if current_user.id != Outfit.query.get(id).user_id:
+def add_pieces(outfit_id):
+    print('OUTFIT ID!!!!!!!!!!!!!!!! ', outfit_id)
+    if current_user.id != Outfit.query.get(outfit_id).owner_id:
         return {'errors': ['Unauthorized']}, 401
-    piece = Outfit_Piece(
-        outfit_id=id,
-        piece_name=request.json['piece_name'],
-        image=request.json['piece_image'],
-        link=request.json['piece_link'],
-        piece_price=request.json['piece_price'],
-    )
 
-    db.session.add(piece)
+    pieces_data = request.get_json().get('pieces', [])
+
+    added_pieces = []
+    for piece_data in pieces_data:
+        piece = Outfit_Piece(
+            outfit_id=outfit_id,
+            piece_name=piece_data['piece_name'],
+            image=piece_data['piece_image'],
+            link=piece_data['piece_link'],
+            piece_price=piece_data['piece_price'],
+        )
+        db.session.add(piece)
+        added_pieces.append(piece.to_dict())
+
     db.session.commit()
-    return piece.to_dict()
+    return {'added_pieces': added_pieces}
 
 # Delete a piece from an outfit
 @pieces_routes.route('/<int:id>', methods=['DELETE'])
