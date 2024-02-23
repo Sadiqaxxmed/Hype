@@ -42,6 +42,12 @@ function Navigation({ isLoaded }){
 		</div>
 
 		<div className='NV-Right-Div'>
+			<div>
+  				<input className='NV-Search-Input' type='text' placeholder='Search'></input>
+  				<i class="fa-solid fa-magnifying-glass search-icon"></i>
+			</div>
+
+			{/* <input className='NV-Search-Input' type='text' placeholder='Search'></input> */}
 			<div className='NV-Right-Section'>
 				{isLoaded && ( <ProfileButton user={sessionUser} /> )}
 			</div>
