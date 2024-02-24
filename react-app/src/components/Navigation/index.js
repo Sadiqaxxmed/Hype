@@ -15,35 +15,30 @@ function Navigation({ isLoaded }){
 		<>
 		<div className='NV-Main-Div'>
 
-		<div className='NV-Left-Div'>	
+		<div className='NV-Left-Div'>
 		<div className='NV-Menu-Left-Options'>
 			<img src={hypeLogo} alt='hype logo' className='NV-Logo'></img>		
 		</div>
-
 		<div className='NV-Menu-Right-Options'>
-
 			<NavLink to='/Home' className="NavLink" exact={true}>
 				<div className='NV-Menu-Options'>
 					Home
 				</div>
 			</NavLink>
-
 			<div className='NV-Menu-Options'>
 				Browse
 			</div>
-
-				<NavLink to={`/uploadOutfit/${user_id}`} className="NavLink" exact={true}>
-					<div className='NV-Menu-Options'>
-						Upload
-					</div>					
-				</NavLink>
-
+			<NavLink to={`/uploadOutfit/${user_id}`} className="NavLink" exact={true}>
+				<div className='NV-Menu-Options'>
+					Upload
+				</div>					
+			</NavLink>
 		</div>
 		</div>
 
 		<div className='NV-Right-Div'>
 			<div>
-  				<input className='NV-Search-Input' type='text' placeholder='Search'></input>
+  			    <input className='NV-Search-Input' type='text' placeholder='Search'></input>
   				<i class="fa-solid fa-magnifying-glass search-icon"></i>
 			</div>
 
