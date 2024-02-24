@@ -50,9 +50,10 @@ INDEX.JS
 }
 
 .NV-Left-Div {
+  /* background-color: tomato; */
   display: inline-flex;
   height: 8vh;
-  width: 35vw;
+  width: 28vw;
 }
 
 .NV-Logo {
@@ -74,15 +75,13 @@ INDEX.JS
 
 .NV-Menu-Right-Options {
   display: inline-flex;
-  position: absolute;
-  left: 90px;
+  position: relative;
+  left: 15px;
   height: 8vh;
-  width: 20vw;
-  padding-left: 25px;
-  padding-right: 25px;
+  width: 21vw;
+  /* background-color: violet; */
   justify-content: space-between;
   align-items: center;
-
 }
 
 .NV-Menu-Options {
@@ -90,11 +89,12 @@ INDEX.JS
   align-items: center;
   justify-content: center;
   height: 6vh;
-  width: 6vw;
+  width: 80px;
   border-radius: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-weight: 600;
   font-size: 15px;
+  /* background-color: black; */
 }
 
 .NV-Menu-Options:hover {
@@ -148,7 +148,7 @@ INDEX.JS
 }
 
 .NV-Search-Input {
-  height: 6vh;
+  height: 40px;
   width: 60vw;
   border-radius: 20px;
   border: none;
